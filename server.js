@@ -3,6 +3,14 @@ bodyParser = require('body-parser');
 var app = express();
 app.use(bodyParser.json());
 
+app.use('/',function(req, res, next){
+    console.log('Authentication of user');
+    next();
+});
+app.use('/',function(req, res, next){
+    console.log('Checking your details...');
+    next();
+});
 app.use('/store',function(req, res, next){
     console.log('I am an intermediary when requesting /store.');
     next();
